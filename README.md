@@ -50,12 +50,12 @@ docker build --rm -t onionirc .
 
 #### Run the server:
 ```
-docker run -d --name onionirc onionirc
+docker run -d -v $(pwd):/var/lib/tor --name onionirc onionirc
 ```
 
 #### Get your onion name:
 ```
-docker exec onionirc bash -c 'cat /var/lib/tor/hidden_service/hostname'
+cat ./hidden_service/hostname
 ```
 
 Connect to your hidden service using the onion domain returned from the last command **on port 6667 using SSL**.
