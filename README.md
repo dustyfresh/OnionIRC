@@ -42,7 +42,7 @@ Modify as you wish. This is the main admin user of the server. **Use strong pass
 Also change the Channel at the very bottom to create your own private channel with a password.
 
 #### Change the MOTD
-Modify the ngircd MOTD file:
+Modify the ngircd MOTD file. This is the first thing a user sees when logging into your server:
 ```
 vim conf/ngircd.motd
 ```
