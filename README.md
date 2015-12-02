@@ -41,6 +41,9 @@ Modify as you wish. This is the main admin user of the server. **Use strong pass
 
 Also change the Channel at the very bottom to create your own private channel with a password.
 
+#### Logging
+Currently this is disabled. If you wish to log you can modify the rsyslog configuration found within conf/rsyslog.conf.
+
 #### Change the MOTD
 Modify the ngircd MOTD file. This is the first thing a user sees when logging into your server:
 ```
