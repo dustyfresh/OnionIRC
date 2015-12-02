@@ -1,6 +1,10 @@
 # OnionIRC
 Docker container for running an IRC server as a Tor hidden service
 
+```
+git clone https://github.com/dustyfresh/OnionIRC.git
+```
+
 #### Notes
 * [ngircd](http://ngircd.barton.de/) (IRC Server)
 * [Debian Jessie](https://hub.docker.com/_/debian/) (base docker image)
@@ -31,19 +35,25 @@ Find this towards the bottom of the file and modify the operator login informati
 
 Modify as you wish. This is the main admin user of the server. **Use strong passwords**!
 
-Also change the Channel at the very bottom to create your own private channel with a password
+Also change the Channel at the very bottom to create your own private channel with a password.
 
-Build the image:
+#### Change the MOTD
+Modify the ngircd MOTD file:
+```
+vim conf/ngircd.motd
+```
+
+#### Build the image:
 ```
 docker build --rm -t onionirc .
 ```
 
-Run the server:
+#### Run the server:
 ```
 docker run -d --name onionirc onionirc
 ```
 
-Get your onion name:
+#### Get your onion name:
 ```
 docker exec onionirc bash -c 'cat /var/lib/tor/hidden_service/hostname'
 ```

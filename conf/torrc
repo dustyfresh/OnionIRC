@@ -1,0 +1,2 @@
+HiddenServiceDir /var/lib/tor/hidden_service/
+HiddenServicePort 6667 127.0.0.1:6667
