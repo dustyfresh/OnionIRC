@@ -16,9 +16,12 @@ You can share the private key of your Tor hidden service within your circle of t
 * [Supervisord](http://supervisord.org/) -- this daemon will restart critical services if they are found to not be running as expected.
 
 #### Generate SSL certs:
+
+**It important to note that the strength of your RSA keys. Since this is a hidden service you will want to use at minimum 2048 bits, but 4096 bits is better. The larger the key the more time it will take generating the key -- introduce more entropy on the host to fix this. See [Haveged](http://www.issihosts.com/haveged/).**
+
 Here is where you will generate the self signed SSL certificate. You do not need to fill anything out — just hold the enter key until the process is complete.
 ```
-cd ssl/ && openssl genrsa -out server.key 1024 && openssl req -new -key server.key -out server.csr && openssl x509 -req -days 1337 -in server.csr -signkey server.key -out server.crt
+cd ssl/ && openssl genrsa -out server.key 2048 && openssl req -new -key server.key -out server.csr && openssl x509 -req -days 1337 -in server.csr -signkey server.key -out server.crt
 ```
 
 #### Customize the configuration:
@@ -65,6 +68,6 @@ docker run -d -v $(pwd):/var/lib/tor --name onionirc onionirc
 cat ./hidden_service/hostname
 ```
 
-Remember that your **private key** is in this directory. This is used to identify your host with Tor so you can use the assigned onion address. If this address changes you will need a way to notify the users of this change -- which is difficult. **Do not lose this key!** It is also recommended that you an encrypted filesystem like [eCryptfs](http://ecryptfs.org/).
+Remember that your **private key** is in this directory. This is used to identify your host with Tor so you can use the assigned onion address. If this address changes you will need a way to notify the users of this change -- which is difficult. **Do not lose this key!** It is also recommended that you utilize an encrypted filesystem like [eCryptfs](http://ecryptfs.org/).
 
 Connect to your hidden service using the onion domain returned from the last command **on port 6667 with SSL**.
