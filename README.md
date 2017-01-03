@@ -21,7 +21,7 @@ You can share the private key of your Tor hidden service within your circle of t
 
 Here is where you will generate the self signed SSL certificate. You do not need to fill anything out — just hold the enter key until the process is complete.
 ```
-cd ssl/ && openssl genrsa -out server.key 2048 && openssl req -new -key server.key -out server.csr && openssl x509 -req -days 1337 -in server.csr -signkey server.key -out server.crt
+cd ssl/ && openssl genrsa -out server.key 4096 && openssl req -new -key server.key -out server.csr && openssl x509 -req -days 1337 -in server.csr -signkey server.key -out server.crt
 ```
 
 #### Customize the configuration:
