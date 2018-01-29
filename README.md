@@ -65,11 +65,18 @@ vim conf/ngircd.motd
 docker build --rm -t onionirc .
 ```
 
-#### Run the server:
+#### Run the server (Tor only):
+```
+sudo docker run -d -v /srv/hidden-service-data:/var/lib/tor --name onionirc --restart=always onionirc
+
+```
+
+#### Run the server (Tor and regular connections):
 ```
 sudo docker run -d -v /srv/hidden-service-data:/var/lib/tor --name onionirc --restart=always -p 6667:6667 onionirc
 
 ```
+
 
 Where /srv/onionirc-hidden-service-data is a directory on your docker hosts filesystem. This is where the private key and the hostname of your hidden service is kept.
 
